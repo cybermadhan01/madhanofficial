@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G. Madhankumar | Cybersecurity & Full-Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #333333;
+            --secondary: #4f46e5;
+            --accent: #10b981;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            color: var(--primary);
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+        }
+        
+        /* Header Styles */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .header-logo {
+            font-weight: 700;
+            background: linear-gradient(90deg, #4f46e5, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        .profile-border {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .profile-border::before {
+            content: '';
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            border-radius: 50%;
+            z-index: -1;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .profile-border:hover::before {
+            opacity: 1;
+            animation: rotate 3s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+        }
+        
+        .typewriter {
+            border-right: 3px solid var(--secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--secondary) }
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .progress-bar {
+            position: relative;
+            height: 8px;
+            width: 100%;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            position: absolute;
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 4px;
+            animation: fillProgress 2s ease-out forwards;
+        }
+        
+        @keyframes fillProgress {
+            from { width: 0; }
+            to { width: var(--progress); }
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background-color: white;
+            border: 3px solid var(--secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .timeline-dot::after {
+            content: '';
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .counter {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .counter::after {
+            content: '+';
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        .hamburger {
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        /* Smooth scrolling fix */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Get in touch button */
+        .get-in-touch-btn {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .get-in-touch-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            z-index: -1;
+            transition: transform 0.5s ease;
+            transform: scaleX(1);
+            transform-origin: right;
+        }
+        
+        .get-in-touch-btn:hover::before {
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+        
+        .get-in-touch-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: -1;
+            transition: transform 0.5s ease;
+            transform: scaleX(0);
+            transform-origin: left;
+            border: 2px solid var(--secondary);
+        }
+        
+        .get-in-touch-btn:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .get-in-touch-btn:hover {
+            color: var(--secondary);
+        }
+        
+        /* Responsive fixes */
+        @media (max-width: 768px) {
+            .profile-border, .profile-img {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .profile-img {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .typewriter {
+                white-space: normal;
+                border-right: none;
+                animation: none;
+            }
+            
+            .timeline-item {
+                padding-left: 2rem;
+            }
+            
+            .header-logo {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="header fixed w-full z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-800 hover:text-indigo-600">Home</a>
+                <a href="#about" class="nav-link text-gray-800 hover:text-indigo-600">About</a>
+                <a href="#experience" class="nav-link text-gray-800 hover:text-indigo-600">Experience</a>
+                <a href="#projects" class="nav-link text-gray-800 hover:text-indigo-600">Projects</a>
+                <a href="#skills" class="nav-link text-gray-800 hover:text-indigo-600">Skills</a>
+                <a href="#contact" class="nav-link text-gray-800 hover:text-indigo-600">Contact</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="hamburger flex flex-col justify-center items-center">
+                    <span class="block w-6 h-0.5 bg-gray-800 mb-1.5 transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-gray-800 mb-1.5 transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-gray-800 transition-all"></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed inset-y-0 right-0 w-64 shadow-lg p-6">
+            <div class="flex flex-col space-y-6 mt-10">
+                <a href="#home" class="nav-link text-gray-800 hover:text-indigo-600">Home</a>
+                <a href="#about" class="nav-link text-gray-800 hover:text-indigo-600">About</a>
+                <a href="#experience" class="nav-link text-gray-800 hover:text-indigo-600">Experience</a>
+                <a href="#projects" class="nav-link text-gray-800 hover:text-indigo-600">Projects</a>
+                <a href="#skills" class="nav-link text-gray-800 hover:text-indigo-600">Skills</a>
+                <a href="#contact" class="nav-link text-gray-800 hover:text-indigo-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-16 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h2 class="text-lg md:text-xl text-gray-600 mb-2">Hello, I'm</h2>
+                <h1 class="text-3xl md:text-5xl font-bold text-gray-800 mb-4">G. Madhankumar</h1>
+                <div class="typewriter text-xl md:text-2xl text-indigo-600 mb-6">Cybersecurity & Full-Stack Developer</div>
+                <p class="text-gray-600 mb-8 max-w-lg">
+                    A multi-domain professional specializing in Cybersecurity, UI/UX Design, SEO, and Full-Stack Development. 
+                    Passionate about creating secure, user-friendly digital experiences while protecting systems from emerging threats.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="get-in-touch-btn px-8 py-3 rounded-full font-medium transition duration-300 inline-block text-white">
+                        Get In Touch
+                    </a>
+                    <a href="#projects" class="border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white px-8 py-3 rounded-full font-medium transition duration-300 inline-block">
+                        View Work
+                    </a>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 flex justify-center">
+                <div class="profile-border">
+                    <a href="https://ibb.co/pjWTsqSy"><img src="https://i.ibb.co/TMKGnysL/Round-Photo-Apr202025-151957.png" alt="Round-Photo-Apr202025-151957" border="0"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">About <span class="text-indigo-600">Me</span></h2>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-sm mb-8">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-shield-alt text-indigo-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Who I Am</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            With a strong foundation in ethical hacking and network defense, I bring a security-first approach to all my projects. 
+                            My cybersecurity background informs my development practices, ensuring robust protection is built into every solution.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-bullseye text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">My Mission</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Dedicated to penetration testing, threat analysis, and digital protection, I aim to create secure yet accessible digital experiences. 
+                            My goal is to bridge the gap between security and usability in the modern web landscape.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-sm h-full">
+                        <h3 class="text-xl font-semibold mb-6">My Expertise</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div class="text-center">
+                                <div class="counter" data-target="2">0</div>
+                                <p class="text-gray-600">Years Internship Experience</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="counter" data-target="50">0</div>
+                                <p class="text-gray-600">Projects Completed</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Cybersecurity</span>
+                                    <span class="text-indigo-600">90%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="--progress: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">UI/UX Design</span>
+                                    <span class="text-indigo-600">85%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="--progress: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Full-Stack Development</span>
+                                    <span class="text-indigo-600">80%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="--progress: 80%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">SEO & Digital Marketing</span>
+                                    <span class="text-indigo-600">75%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="--progress: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">My <span class="text-indigo-600">Journey</span></h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-semibold mb-2">Tech Fusion Innovator</h3>
+                        <p class="text-indigo-600 mb-2">2026-2027 | Future Aspiration</p>
+                        <p class="text-gray-600">
+                            Merging AI, cybersecurity, blockchain, and design to create next-generation digital solutions that are both innovative and secure.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-semibold mb-2">Founder, Roundmart</h3>
+                        <p class="text-indigo-600 mb-2">2024-Present</p>
+                        <p class="text-gray-600">
+                            Spearheading eCommerce innovations with a focus on security, user experience, and performance optimization.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-semibold mb-2">SEO & Social Media Strategist</h3>
+                        <p class="text-indigo-600 mb-2">2023-2024 | Roundmart</p>
+                        <p class="text-gray-600">
+                            Improved digital reach and performance through strategic SEO implementation and data-driven social media campaigns.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-semibold mb-2">UI/UX Designer & Frontend Developer</h3>
+                        <p class="text-indigo-600 mb-2">2022-2023</p>
+                        <p class="text-gray-600">
+                            Crafting clean, intuitive user interfaces using Figma, Tailwind CSS, and React while maintaining security best practices.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-semibold mb-2">Cybersecurity Specialist</h3>
+                        <p class="text-indigo-600 mb-2">2021-2022 | Freelance & Academic</p>
+                        <p class="text-gray-600">
+                            Conducted penetration testing and vulnerability assessments for various clients, identifying and mitigating security risks.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">Featured <span class="text-indigo-600">Projects</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="h-48 bg-indigo-100 flex items-center justify-center">
+                        <i class="fas fa-lock text-5xl text-indigo-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Cybersecurity Audit</h3>
+                        <p class="text-gray-600 mb-4">
+                            Comprehensive security assessment for a financial services platform, identifying critical vulnerabilities.
+                        </p>
+                        <div class="flex items-center text-green-600">
+                            <i class="fas fa-chart-line mr-2"></i>
+                            <span>30% threat reduction</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="h-48 bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-paint-brush text-5xl text-purple-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Roundmart UI/UX Redesign</h3>
+                        <p class="text-gray-600 mb-4">
+                            Complete overhaul of eCommerce platform focusing on user experience and conversion optimization.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <div class="flex items-center text-blue-600">
+                                <i class="fas fa-arrow-up mr-2"></i>
+                                <span>20% higher sales</span>
+                            </div>
+                            <div class="flex items-center text-red-600">
+                                <i class="fas fa-chart-bar mr-2"></i>
+                                <span>30% bounce rate drop</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="h-48 bg-yellow-100 flex items-center justify-center">
+                        <i class="fas fa-search text-5xl text-yellow-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">SEO Overhaul</h3>
+                        <p class="text-gray-600 mb-4">
+                            Strategic SEO implementation for a portfolio of client websites, focusing on technical and content optimization.
+                        </p>
+                        <div class="flex items-center text-indigo-600">
+                            <i class="fas fa-users mr-2"></i>
+                            <span>50% organic traffic growth</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="h-48 bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-shopping-cart text-5xl text-green-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Secure E-commerce Web App</h3>
+                        <p class="text-gray-600 mb-4">
+                            Full-stack development of a secure online marketplace with integrated payment processing and fraud detection.
+                        </p>
+                        <div class="flex items-center text-purple-600">
+                            <i class="fas fa-shield-alt mr-2"></i>
+                            <span>Zero security breaches</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-link text-5xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Blockchain Cybersecurity Research</h3>
+                        <p class="text-gray-600 mb-4">
+                            Investigated blockchain vulnerabilities and developed mitigation strategies for smart contract security.
+                        </p>
+                        <div class="flex items-center text-yellow-600">
+                            <i class="fas fa-lightbulb mr-2"></i>
+                            <span>3 novel attack vectors identified</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <div class="h-48 bg-red-100 flex items-center justify-center">
+                        <i class="fas fa-robot text-5xl text-red-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">AI-Powered Security Platform</h3>
+                        <p class="text-gray-600 mb-4">
+                            Future project: Developing an AI-driven security monitoring system with real-time threat detection.
+                        </p>
+                        <div class="flex items-center text-green-600">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>Coming 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">My <span class="text-indigo-600">Skills</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cybersecurity -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-shield-alt text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Cybersecurity</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-indigo-600 mr-2"></i>
+                            Ethical hacking & penetration testing
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-indigo-600 mr-2"></i>
+                            Network security & threat mitigation
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-indigo-600 mr-2"></i>
+                            Vulnerability assessment
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-indigo-600 mr-2"></i>
+                            Security compliance & auditing
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- UI/UX Design -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-paint-brush text-purple-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">UI/UX Design</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            Figma & Adobe XD prototyping
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            Wireframing & user flows
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            User-centered design principles
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            Interaction design & micro-interactions
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Full-Stack Development -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-code text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Full-Stack Development</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-600 mr-2"></i>
+                            HTML, CSS, JavaScript (ES6+)
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-600 mr-2"></i>
+                            React, Node.js, Express
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-600 mr-2"></i>
+                            MongoDB & SQL databases
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-600 mr-2"></i>
+                            RESTful API development
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- SEO & Digital Marketing -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-chart-line text-yellow-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">SEO & Digital Marketing</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-yellow-600 mr-2"></i>
+                            Keyword research & strategy
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-yellow-600 mr-2"></i>
+                            Technical SEO optimization
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-yellow-600 mr-2"></i>
+                            Analytics & performance tracking
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-yellow-600 mr-2"></i>
+                            Social media marketing
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- E-commerce -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-shopping-cart text-green-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">E-commerce</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Shopify development
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Conversion rate optimization
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Payment gateway integration
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            Theme customization & design
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Blockchain & AI -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-link text-red-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Blockchain & AI</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-red-600 mr-2"></i>
+                            Smart contract development
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-red-600 mr-2"></i>
+                            Blockchain security analysis
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-red-600 mr-2"></i>
+                            AI model integration
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-red-600 mr-2"></i>
+                            Secure decentralized solutions
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">Get In <span class="text-indigo-600">Touch</span></h2>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-semibold mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Email</h4>
+                                    <a href="mailto:cybermadhan@gmail.com" class="text-indigo-600 hover:underline">cybermadhan@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Mobile</h4>
+                                    <a href="tel:+919384772250" class="text-indigo-600 hover:underline">+91 9384772250</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-share-alt text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800 mb-2">Social Media</h4>
+                                    <div class="flex space-x-4">
+                                        <a href="https://www.linkedin.com/in/g-madhan-kumar-b-e-408807253/" target="_blank" class="bg-indigo-100 hover:bg-indigo-200 p-3 rounded-full text-indigo-600 transition">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="https://www.instagram.com/madhan_tentacion" target="_blank" class="bg-pink-100 hover:bg-pink-200 p-3 rounded-full text-pink-600 transition">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                        <a href="https://x.com/CyberMadhan" target="_blank" class="bg-blue-100 hover:bg-blue-200 p-3 rounded-full text-blue-600 transition">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a href="https://github.com/cybermadhan01" target="_blank" class="bg-gray-100 hover:bg-gray-200 p-3 rounded-full text-gray-600 transition">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-semibold mb-6">Send Me a Message</h3>
+                        <form id="contact-form">
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 mb-2">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" required>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 mb-2">Your Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" required>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                                <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" required>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 mb-2">Your Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition w-full">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 px-6">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#home" class="text-2xl font-bold">G. Madhankumar<span class="text-indigo-400">.</span></a>
+                    <p class="text-gray-400 mt-2">Cybersecurity & Full-Stack Developer</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white transition">Projects</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 G. Madhankumar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Close mobile menu when clicking a link
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('open');
+                mobileMenu.classList.remove('open');
+            });
+        });
+        
+        // Smooth scrolling for all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active state
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Animated counters
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        function animateCounters() {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 10);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+        
+        // Start counters when section is in view
+        const aboutSection = document.getElementById('about');
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                animateCounters();
+                observer.unobserve(aboutSection);
+            }
+        }, { threshold: 0.5 });
+        
+        observer.observe(aboutSection);
+        
+        // Form submission
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                // Here you would typically send the form data to a server
+                // For this example, we'll just show an alert
+                alert(`Thank you, ${name}! Your message has been sent successfully. I'll get back to you soon.`);
+                
+                // Reset form
+                contactForm.reset();
+            });
+        }
+        
+        // Ensure Get In Touch button works
+        const getInTouchBtn = document.querySelector('.get-in-touch-btn');
+        if (getInTouchBtn) {
+            getInTouchBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    window.scrollTo({
+                        top: contactSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
